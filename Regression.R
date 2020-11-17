@@ -63,7 +63,7 @@ plot_usmap(
   scale_fill_continuous(
     low = 'orange', high = 'red', name = 'Number of Universities', label = scales::comma
   ) +
-  labs(title = 'States Represented') +
+  labs(title = paste('States Represented (', nrow(collegeData), ' Total)', sep = '')) +
   theme(plot.title = element_text(hjust = 0.5, size = 22))
 
 ggsave('./output/UniversitiesRepresented.png')
@@ -130,8 +130,8 @@ outputModel(model, 'WithTestingStrategy')
 
 model <- lm(
   AveragePositivityRate ~
-    # + Funding
-    + Enrollment
+  # + Funding
+  + Enrollment
   # + Region
   + StartDate
   # + TestingStrategy 
